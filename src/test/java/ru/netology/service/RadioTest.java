@@ -7,13 +7,13 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheNextStationLowestValue() {
-        Radio nextButton = new Radio();
-        nextButton.setCurrentStation(0);
+        Radio radio = new Radio();
+        radio.setCurrentStation(0);
 
-        nextButton.next();
+        radio.next();
 
         int expected = 1;
-        int actual = nextButton.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
 
@@ -25,13 +25,13 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheNextStationHighestValue() {
-        Radio nextButton = new Radio();
-        nextButton.setCurrentStation(9);
+        Radio radio = new Radio();
+        radio.setCurrentStation(9);
 
-        nextButton.next();
+        radio.next();
 
         int expected = 0;
-        int actual = nextButton.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
 
@@ -43,13 +43,13 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheNextStationBorderValue() {
-        Radio nextButton = new Radio();
-        nextButton.setCurrentStation(8);
+        Radio radio = new Radio();
+        radio.setCurrentStation(8);
 
-        nextButton.next();
+        radio.next();
 
         int expected = 9;
-        int actual = nextButton.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
 
@@ -61,12 +61,12 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheConcreteStationLowestBorder() {
-        Radio stationNumber = new Radio();
+        Radio radio = new Radio();
 
-        stationNumber.setCurrentStation(0);
+        radio.setCurrentStation(0);
 
         int expected = 0;
-        int actual = stationNumber.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
 
@@ -78,12 +78,12 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheConcreteStationHighestBorder() {
-        Radio stationNumber = new Radio();
+        Radio radio = new Radio();
 
-        stationNumber.setCurrentStation(9);
+        radio.setCurrentStation(9);
 
         int expected = 9;
-        int actual = stationNumber.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
 
@@ -95,29 +95,44 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheConcreteStationInvalidValue() {
-        Radio stationNumber = new Radio();
+        Radio radio = new Radio();
 
-        stationNumber.setCurrentStation(10);
+        radio.setCurrentStation(10);
 
         int expected = 0;
-        int actual = stationNumber.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
 
-        System.out.println("Test 6.1");
+        System.out.println("Test 6.1.1");
         System.out.println("Ожидаемое: " + expected + " Фактическое: " + actual);
         System.out.println();
 
     }
+    @Test
+    public void shouldChangeToTheConcreteStationUpperLimitChanged() {
+        Radio radio = new Radio(11);
 
+        radio.setCurrentStation(10);
+
+        int expected = 10;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+
+        System.out.println("Test 6.1.2");
+        System.out.println("Ожидаемое: " + expected + " Фактическое: " + actual);
+        System.out.println();
+
+    }
     @Test
     public void shouldChangeToTheConcreteStationInvalidNegativeValue() {
-        Radio stationNumber = new Radio();
+        Radio radio = new Radio();
 
-        stationNumber.setCurrentStation(-1);
+        radio.setCurrentStation(-1);
 
         int expected = 0;
-        int actual = stationNumber.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
 
@@ -127,16 +142,15 @@ public class RadioTest {
 
     }
 
-
     @Test
     public void shouldChangeToThePrevStationLowestValue() {
-        Radio prevButton = new Radio();
-        prevButton.setCurrentStation(0);
+        Radio radio = new Radio();
+        radio.setCurrentStation(0);
 
-        prevButton.prev();
+        radio.prev();
 
         int expected = 9;
-        int actual = prevButton.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
 
@@ -148,13 +162,13 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToThePrevStationHighestValue() {
-        Radio prevButton = new Radio();
-        prevButton.setCurrentStation(9);
+        Radio radio = new Radio();
+        radio.setCurrentStation(9);
 
-        prevButton.prev();
+        radio.prev();
 
         int expected = 8;
-        int actual = prevButton.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
 
@@ -166,13 +180,13 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToThePrevStationBorderValue() {
-        Radio prevButton = new Radio();
-        prevButton.setCurrentStation(1);
+        Radio radio = new Radio();
+        radio.setCurrentStation(1);
 
-        prevButton.prev();
+        radio.prev();
 
         int expected = 0;
-        int actual = prevButton.getCurrentStation();
+        int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
 
@@ -185,13 +199,13 @@ public class RadioTest {
 
     @Test
     public void shouldChangeVolumeToTheUpperLimit() {
-        Radio volumeUpButton = new Radio();
-        volumeUpButton.setCurrentVolume(99);
+        Radio radio = new Radio();
+        radio.setCurrentVolume(99);
 
-        volumeUpButton.increaseVolume();
+        radio.increaseVolume();
 
         int expected = 100;
-        int actual = volumeUpButton.getCurrentVolume();
+        int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -203,13 +217,13 @@ public class RadioTest {
 
     @Test
     public void shouldChangeVolumeAboveTheUpperLimit() {
-        Radio volumeUpButton = new Radio();
-        volumeUpButton.setCurrentVolume(100);
+        Radio radio = new Radio();
+        radio.setCurrentVolume(100);
 
-        volumeUpButton.increaseVolume();
+        radio.increaseVolume();
 
         int expected = 100;
-        int actual = volumeUpButton.getCurrentVolume();
+        int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -221,13 +235,13 @@ public class RadioTest {
 
     @Test
     public void shouldChangeVolumeToTheBottomLimit() {
-        Radio volumeDownButton = new Radio();
-        volumeDownButton.setCurrentVolume(1);
+        Radio radio = new Radio();
+        radio.setCurrentVolume(1);
 
-        volumeDownButton.decreaseVolume();
+        radio.decreaseVolume();
 
         int expected = 0;
-        int actual = volumeDownButton.getCurrentVolume();
+        int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -239,13 +253,13 @@ public class RadioTest {
 
     @Test
     public void shouldChangeVolumeBeyondTheBottomLimit() {
-        Radio volumeDownButton = new Radio();
-        volumeDownButton.setCurrentVolume(0);
+        Radio radio = new Radio();
+        radio.setCurrentVolume(0);
 
-        volumeDownButton.decreaseVolume();
+        radio.decreaseVolume();
 
         int expected = 0;
-        int actual = volumeDownButton.getCurrentVolume();
+        int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -254,6 +268,4 @@ public class RadioTest {
         System.out.println();
 
     }
-
-
 }
