@@ -95,11 +95,11 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheConcreteStationInvalidValue() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(11);
 
         radio.setCurrentStation(10);
 
-        int expected = 0;
+        int expected = 10;
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -109,6 +109,24 @@ public class RadioTest {
         System.out.println();
 
     }
+
+    @Test
+    public void shouldChangeToTheConcreteStationInvalidValueNegative() {
+        Radio radio = new Radio(10);
+
+        radio.setCurrentStation(10);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+
+        System.out.println("Test 6.1.3");
+        System.out.println("Ожидаемое: " + expected + " Фактическое: " + actual);
+        System.out.println();
+
+    }
+
     @Test
     public void shouldChangeToTheConcreteStationUpperLimitChanged() {
         Radio radio = new Radio(11);
@@ -125,6 +143,7 @@ public class RadioTest {
         System.out.println();
 
     }
+
     @Test
     public void shouldChangeToTheConcreteStationInvalidNegativeValue() {
         Radio radio = new Radio();
@@ -267,5 +286,61 @@ public class RadioTest {
         System.out.println("Ожидаемое: " + expected + " Фактическое: " + actual);
         System.out.println();
 
+    }
+
+    @Test
+    public void shouldCheckSettersCurrentVolume() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(100);
+        int expected = 100;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+
+        System.out.println("Test 14.");
+        System.out.println("Ожидаемое: " + expected + " Фактическое: " + actual);
+        System.out.println();
+    }
+
+    @Test
+    public void shouldCheckSettersLowestVolume() {
+        Radio radio = new Radio();
+        radio.setLowestVolume(10);
+        int expected = 10;
+        int actual = radio.getLowestVolume();
+
+        Assertions.assertEquals(expected, actual);
+
+        System.out.println("Test 15.");
+        System.out.println("Ожидаемое: " + expected + " Фактическое: " + actual);
+        System.out.println();
+    }
+
+    @Test
+    public void shouldCheckSettersHighestVolume() {
+        Radio radio = new Radio();
+        radio.setHighestVolume(70);
+        int expected = 70;
+        int actual = radio.getHighestVolume();
+
+        Assertions.assertEquals(expected, actual);
+
+        System.out.println("Test 16.");
+        System.out.println("Ожидаемое: " + expected + " Фактическое: " + actual);
+        System.out.println();
+    }
+
+    @Test
+    public void shouldCheckSettersMaxNumberOfStations() {
+        Radio radio = new Radio();
+        radio.setMaxNumberOfStations(99);
+        int expected = 99;
+        int actual = radio.getMaxNumberOfStations();
+
+        Assertions.assertEquals(expected, actual);
+
+        System.out.println("Test 17.");
+        System.out.println("Ожидаемое: " + expected + " Фактическое: " + actual);
+        System.out.println();
     }
 }
