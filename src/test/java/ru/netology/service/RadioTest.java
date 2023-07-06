@@ -7,7 +7,7 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheNextStationLowestValue() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(0);
 
         radio.next();
@@ -25,7 +25,7 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheNextStationHighestValue() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(9);
 
         radio.next();
@@ -43,7 +43,7 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheNextStationBorderValue() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(8);
 
         radio.next();
@@ -61,7 +61,7 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheConcreteStationLowestBorder() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
         radio.setCurrentStation(0);
 
@@ -78,7 +78,7 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheConcreteStationHighestBorder() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
         radio.setCurrentStation(9);
 
@@ -121,23 +121,6 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
 
-        System.out.println("Test 6.1.3");
-        System.out.println("Ожидаемое: " + expected + " Фактическое: " + actual);
-        System.out.println();
-
-    }
-
-    @Test
-    public void shouldChangeToTheConcreteStationUpperLimitChanged() {
-        Radio radio = new Radio(11);
-
-        radio.setCurrentStation(10);
-
-        int expected = 10;
-        int actual = radio.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-
         System.out.println("Test 6.1.2");
         System.out.println("Ожидаемое: " + expected + " Фактическое: " + actual);
         System.out.println();
@@ -146,7 +129,7 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToTheConcreteStationInvalidNegativeValue() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
         radio.setCurrentStation(-1);
 
@@ -163,7 +146,7 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToThePrevStationLowestValue() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(0);
 
         radio.prev();
@@ -181,7 +164,7 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToThePrevStationHighestValue() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(9);
 
         radio.prev();
@@ -199,7 +182,7 @@ public class RadioTest {
 
     @Test
     public void shouldChangeToThePrevStationBorderValue() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(1);
 
         radio.prev();

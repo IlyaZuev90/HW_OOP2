@@ -2,36 +2,37 @@ package ru.netology.service;
 
 import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
-//@Data
+@RequiredArgsConstructor
+@NoArgsConstructor(force = true)
 public class Radio {
-    private @Setter @Getter int currentStation;
-    private @Setter @Getter int currentVolume;
-    private @Setter @Getter int maxNumberOfStations = 10;
-
-    private @Setter @Getter int lowestVolume = 0;
-    private @Setter @Getter int highestVolume = 100;
-
-    public Radio(int maxNumberOfStations) {
-        this.maxNumberOfStations = maxNumberOfStations;
-    }
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
+    @NonNull
+    @Setter
+    @Getter
+    private int maxNumberOfStations;
+    @Getter
+    private
+    int currentStation = 0;
+    @Setter
+    @Getter
+    private
+    int currentVolume = 0;
+    @Setter
+    @Getter
+    private
+    int lowestVolume = 0;
+    @Setter
+    @Getter
+    private
+    int highestVolume = 100;
 
     public void setCurrentStation(int currentStation) {
         if (currentStation < 0) {
             return;
         }
-        if (currentStation <= maxNumberOfStations - 1) {
-            this.currentStation = currentStation;
+        if (currentStation > maxNumberOfStations - 1) {
+            return;
         }
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
+        this.currentStation = currentStation;
     }
 
     public void next() {
