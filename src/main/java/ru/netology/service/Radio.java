@@ -1,33 +1,42 @@
 package ru.netology.service;
 
-public class Radio {
-    private int currentStation;
-    private int currentVolume;
+import lombok.*;
 
-    public int getCurrentStation() {
-        return currentStation;
-    }
+@RequiredArgsConstructor
+@NoArgsConstructor(force = true)
+public class Radio {
+    @NonNull
+    @Setter
+    @Getter
+    private int maxNumberOfStations;
+    @Getter
+    private
+    int currentStation = 0;
+    @Setter
+    @Getter
+    private
+    int currentVolume = 0;
+    @Setter
+    @Getter
+    private
+    int lowestVolume = 0;
+    @Setter
+    @Getter
+    private
+    int highestVolume = 100;
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation >= 0) {
-            if (currentStation <= 9) {
-                this.currentStation = currentStation;
-            }
+        if (currentStation < 0) {
+            return;
         }
-
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public void setCurrentVolume(int currentVolume) {
-        this.currentVolume = currentVolume;
+        if (currentStation > maxNumberOfStations - 1) {
+            return;
+        }
+        this.currentStation = currentStation;
     }
 
     public void next() {
-
-        if (currentStation < 9) {
+        if (currentStation < maxNumberOfStations - 1) {
             currentStation = currentStation + 1;
         } else {
             currentStation = 0;
@@ -35,36 +44,22 @@ public class Radio {
     }
 
     public void prev() {
-
         if (currentStation > 0) {
             currentStation = currentStation - 1;
         } else {
-            currentStation = 9;
+            currentStation = maxNumberOfStations - 1;
         }
     }
 
     public void increaseVolume() {
-        if (currentVolume < 100) {
+        if (currentVolume < highestVolume) {
             currentVolume = currentVolume + 1;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > lowestVolume) {
             currentVolume = currentVolume - 1;
         }
     }
-    //    public void setNewCurrentStation(int newCurrentStation) {
-//
-//        if (newCurrentStation <= 9) {
-//            currentStation = newCurrentStation;
-//        } else {
-//            String s = String.format("%d", newCurrentStation);
-//
-//            String r = String.valueOf(s.charAt(s.length() - 1));
-//            currentStation = Integer.parseInt(r);
-//
-//        }
-//
-//    }
 }
